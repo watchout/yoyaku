@@ -3,24 +3,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Yoyaku extends CI_Controller {
 
-	public function __construct() {
-		parent::__construct();
-		
-		$this->load->library('session','encrypt');
-		$this->load->helper(array('form','url','date'));
-		$this->output->set_header('Content-Type: text/html; charset=UTF-8');
-		$this->load->model('base_model');
+	/**
+	 * Index Page for this controller.
+	 *
+	 * Maps to the following URL
+	 * 		http://example.com/index.php/welcome
+	 *	- or -
+	 * 		http://example.com/index.php/welcome/index
+	 *	- or -
+	 * Since this controller is set as the default controller in
+	 * config/routes.php, it's displayed at http://example.com/
+	 *
+	 * So any other public methods not prefixed with an underscore will
+	 * map to /index.php/welcome/<method_name>
+	 * @see https://codeigniter.com/user_guide/general/urls.html
+	 */
+	public function index()
+	{
+	    echo '予約';
+	    $this->load->helper('url');
+	    $this->load->view('welcome_message');
 	}
-	
-	public function index(){
-	    $data = new stdClass;
-	    $data->title    = "予約ページ";
-	    
-	    $data->test = "testtest";
-	    
-	    $data->main = $this->load->view('yoyaku/top',$data,TRUE);
-	    
-	    $this->load->view('master',$data);
-	}
-	
 }

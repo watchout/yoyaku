@@ -18,29 +18,28 @@ class Test extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-    
+
 	 public function __construct() {
 		parent::__construct();
-		
+
 		$this->load->library('session','encrypt');
 		$this->load->helper(array('form','url','date'));
 		$this->output->set_header('Content-Type: text/html; charset=UTF-8');
 		$this->load->model('base_model');
 	}
-	
+
 	public function index()
 	{
 	    echo 'テスト';
-	    $this->load->helper('url');
 	    $this->load->view('welcome_message');
 	}
-	
+
 	public function get_post($test=''){
 	    //echo $test;
-	    
+
 	    //$post_data = new stdClass;
 	    $update	= new stdClass;
-	    
+
 	    if($test){
 		$author = "テスト";
 		$text = "テストテストテストテスト";
@@ -48,14 +47,14 @@ class Test extends CI_Controller {
 	        $author = $this->input->post('author');
 		$text = $this->input->post('text');
 	    }
-	    
+
 	    if($author && $text){
 		$update->name = $author;
 		$update->text = $text;
 		$this->base_model->update('test','1',$update);
 	    }
 	    $echo_data = $this->base_model->select('test','1');
-	    
+
 	    $send_data[0] = array(
 		'author'    => $echo_data->name,
 		'text'	    => $echo_data->text

@@ -15,7 +15,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "watch": "watchify -t babelify test.jsx -o ./js/test.js -v"
+    "watch": "watchify -t babelify ./js/jsx/master/regist.jsx -o ./js/master/regist.js -v"
   },
   "author": "",
   "license": "ISC"
